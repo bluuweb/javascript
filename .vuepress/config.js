@@ -19,6 +19,7 @@ module.exports = {
     sidebar:
       [
         '/',
+        '/fundamentos/',
         '/chat/',
       ]
   }
