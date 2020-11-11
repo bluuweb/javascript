@@ -16,3 +16,6 @@ Aprende desde cero a trabajar con <b>React.js y Firebase</b> aquí: [http://curs
 Aprende desde cero a trabajar con <b>Bootstrap 4!</b> aquí: [http://curso-bootstrap-4-udemy.bluuweb.cl](http://curso-bootstrap-4-udemy.bluuweb.cl)
 <b>Nos vemos en clases!</b>
 :::
+
+## Preguntas y Respuestas
+- [https://discord.gg/xSceUPh](https://discord.gg/xSceUPh)

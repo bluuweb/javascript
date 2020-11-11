@@ -9,8 +9,7 @@ module.exports = {
   },
   themeConfig:{
     nav: [
-      { text: 'Guía', link: '/' },
-      // { text: 'Guia', link: '/docs/' },
+      { text: 'Guías', link: 'https://bluuweb.github.io/' },
       { text: 'Youtube', link: 'https://youtube.com/bluuweb' },
       { text: 'Curso Vue.js', link: 'http://curso-vue-js-udemy.bluuweb.cl' },
       { text: 'Curso React.js', link: 'http://curso-react-js-udemy.bluuweb.cl' },
@@ -20,8 +19,11 @@ module.exports = {
       [
         '/',
         '/fundamentos/',
+        '/02-dom/',
         '/chat/',
       ]
   }
  
 }
+
+{/* <img :src="$withBase('/img/compu-1.gif')"> */}

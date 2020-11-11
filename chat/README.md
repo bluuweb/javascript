@@ -1,14 +1,24 @@
 # Chat Firestore
 Realizarmos un chat en tiempo real con Firestore, un servicio de Firebase.
 
-## Conocimientos previos
+## Requisitos
+- [Fundamentos de HTML y CSS](https://www.youtube.com/watch?v=rr2H086z16s&list=PLPl81lqbj-4LKo66cEts5yC_AjOvqKptm)
+- [Fundamentos de Javascript](https://bluuweb.github.io/javascript/)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z4TuS0HEJP8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-1. HTML y CSS: [Ver curso gratis aquí](https://www.youtube.com/watch?v=rr2H086z16s&list=PLPl81lqbj-4LKo66cEts5yC_AjOvqKptm)
-2. Bootstrap 4!: [Ver curso gratis aquí](https://www.youtube.com/watch?v=z7ecV0tL1Gg)
-3. Javascript fundamentos: [Ver curso gratis aquí](https://www.youtube.com/watch?v=Zwcqq-7IDI0&list=PLPl81lqbj-4I11QPam9ApoT7tGbmyBg9P)
-4. Firebase y Firestore: [Ver curso gratis aquí](https://www.youtube.com/watch?v=gsePWTrOCZE&list=PLPl81lqbj-4JiR1Cio6xEygCZDmZmDUWI)
-5. Async await JS: [Ver curso gratis aquí](https://youtu.be/stiPdlSkTOI)
-6. DOM JS: [Ver curso gratis aquí](https://www.youtube.com/watch?v=8u4Xef5YtFE)
+1. [VAR vs LET vs CONST](https://youtu.be/Z4TuS0HEJP8?t=61)
+2. [Funciones de Flecha](https://youtu.be/Z4TuS0HEJP8?t=690)
+3. [Template String](https://youtu.be/Z4TuS0HEJP8?t=1386)
+4. [Objetos](https://youtu.be/Z4TuS0HEJP8?t=1655)
+5. [Destructuring Objects](https://youtu.be/Z4TuS0HEJP8?t=2005)
+6. [Array de Objetos](https://youtu.be/Z4TuS0HEJP8?t=2182)
+7. [Fetch API](https://youtu.be/Z4TuS0HEJP8?t=2538)
+8. [Async & Await](https://youtu.be/Z4TuS0HEJP8?t=3059)
+9. [Map()](https://youtu.be/Z4TuS0HEJP8?t=3333)
+10. [Filter()](https://youtu.be/Z4TuS0HEJP8?t=3611)
+
+## Preguntas y Respuestas
+- [https://discord.gg/xSceUPh](https://discord.gg/xSceUPh)
 
 ## Crear proyecto en Firebase
 
