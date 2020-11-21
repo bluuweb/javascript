@@ -78,157 +78,145 @@ console.log(Object.keys(todos).length);
 ## HTML
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TODO APP</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤ Regalame un Like ❤</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+<body>
     <div class="container">
-      <h1>TODO APP</h1>
-      <form id="formulario">
-        <input
-          type="text"
-          placeholder="Ingrese tarea"
-          class="form-control"
-          id="input"
-          autofocus
-        />
-        <button type="submit" class="btn btn-primary btn-block mt-2">
-          Agregar
-        </button>
-      </form>
-      <hr />
-      <div id="box-items">
-        <p class="text-center alert alert-dark">Sin Tareas pendientes ❤</p>
-      </div>
-    </div>
+        <h1 class="my-5">ToDo List</h1>
+        <form id="formulario">
+            <input type="text"
+                placeholder="Ingrese tarea"
+                class="form-control my-2"
+            >
+            <button class="btn btn-primary btn-block" type="submit">Agregar</button>
+        </form>
 
-    <template id="template-tarea">
-      <div
-        class="alert alert-warning d-flex justify-content-between align-items-center"
-      >
-        <p class="m-0">Tarea</p>
-        <h3 class="m-0">
-          <i class="fas fa-check-circle text-success" role="button"></i>
-          <i class="fas fa-minus-circle text-danger" role="button"></i>
-        </h3>
-      </div>
+        <hr>
+
+        <div id="lista-tareas" class="mt-2">
+            <div class="alert alert-dark">
+                Sin tareas pendientes 😍
+            </div>
+        </div>
+    </div>
+    
+    <template id="template">
+        <div class="alert alert-warning d-flex justify-content-between align-items-center">
+            <p class="m-0">Tarea #1</p>
+            <h3 class="m-0">
+                <i class="fas fa-check-circle text-success" role="button"></i>
+                <i class="fas fa-minus-circle text-danger"  role="button"></i>
+            </h3>
+        </div>
     </template>
 
     <script src="app.js"></script>
-  </body>
+</body>
 </html>
-
 ```
 
 ## JS
 ```js
-console.log('Recuerda suscribirte 😍')
-// const input = document.getElementById('input')
+console.log('Suscríbete al canal y dale me gusta 😍')
+
 const formulario = document.getElementById('formulario')
-const boxItems = document.getElementById('box-items')
-const templateTarea = document.getElementById('template-tarea').content
+const listaTareas = document.getElementById('lista-tareas')
+const template = document.getElementById('template').content
 const fragment = document.createDocumentFragment()
 let tareas = {}
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('tareas')) {
         tareas = JSON.parse(localStorage.getItem('tareas'))
-        pintarTareas()
     }
+    pintarTareas()
 })
+
+listaTareas.addEventListener('click', (e) => {btnAccion(e)})
 
 formulario.addEventListener('submit', e => {
     e.preventDefault()
-    // console.log(e.target[0])
-    // console.log(e.target.input)
-    // console.log(e.target.querySelector('input'))
-    agregarTodo(e)
+    // console.log(e.target[0].value)
+    // console.log(e.target.querySelector('input').value)
+    setTarea(e)
 })
 
-const agregarTodo = (e) => {
-    if (e.target.input.value.trim() === '') {
-        console.log('no existe')
+const setTarea = e => {
+    const texto = e.target.querySelector('input').value
+    
+    if (texto.trim() === '') {
+        console.log('está vacio')
         return
     }
-
-    let tarea = {
-        id: new Date().getTime(),
-        texto: e.target.input.value,
+    const tarea = {
+        id: Date.now(),
+        texto: texto,
         estado: false
     }
     
-    tareas[tarea.id] = {...tarea}
-    formulario.reset()
-    e.target.input.focus()
+    tareas[tarea.id] = tarea
     pintarTareas()
+
+    formulario.reset()
+    e.target.querySelector('input').focus()
 }
 
 const pintarTareas = () => {
-    boxItems.innerHTML = ''
+    
     localStorage.setItem('tareas', JSON.stringify(tareas))
 
-    if (Object.keys(tareas).length === 0) {
-        boxItems.innerHTML = `
-        <p class="text-center alert alert-dark">Sin Tareas pendientes ❤</p>
+    if (Object.values(tareas).length === 0) {
+        listaTareas.innerHTML = `
+        <div class="alert alert-dark text-center">
+        Sin tareas pendientes 😍
+        </div>
         `
-        return 
+        return
     }
+    
+    listaTareas.innerHTML = ''
 
-    Object.values(tareas).forEach(item => {
-        const clone = templateTarea.cloneNode(true)   
-        clone.querySelector('p').textContent = item.texto
-        if (item.estado) {
-            clone.querySelector('.alert').classList.replace('alert-warning', 'alert-info')
-            clone.querySelector('p').style.textDecoration = "line-through"
-            clone.querySelectorAll('i')[0].classList.replace('fa-check-circle', 'fa-undo-alt')
+    Object.values(tareas).forEach(tarea => {
+        const clone = template.cloneNode(true)
+        clone.querySelector('p').textContent = tarea.texto
+
+        if (tarea.estado) {
+            clone.querySelectorAll('.fas')[0].classList.replace('fa-check-circle', 'fa-undo-alt')
+            clone.querySelector('.alert').classList.replace('alert-warning', 'alert-primary')
+            clone.querySelector('p').style.textDecoration = 'line-through'
         }
-        clone.querySelectorAll('.fas')[0].dataset.id = item.id
-        clone.querySelectorAll('.fas')[1].dataset.id = item.id
+
+        clone.querySelectorAll('.fas')[0].dataset.id = tarea.id
+        clone.querySelectorAll('.fas')[1].dataset.id = tarea.id
         fragment.appendChild(clone)
     })
-    boxItems.appendChild(fragment)
-
+    listaTareas.appendChild(fragment)
 }
 
-boxItems.addEventListener('click', e => {
-    // boton eliminar
-    // console.log(e.target.classList.contains('fa-minus-circle'))
+const btnAccion = e => {
+    // console.log(e.target.classList.contains('fa-check-circle'))
+    if (e.target.classList.contains('fa-check-circle')) {
+        tareas[e.target.dataset.id].estado = true
+        pintarTareas()
+    }
+
     if (e.target.classList.contains('fa-minus-circle')) {
+        // console.log(e.target.dataset.id)
         delete tareas[e.target.dataset.id]
         pintarTareas()
     }
 
-    // boton success
-    if (e.target.classList.contains('fa-check-circle')) {
-        const tarea = tareas[e.target.dataset.id]
-        tarea.estado = true
-        tareas[e.target.dataset.id] = { ...tarea }
-        pintarTareas()
-    }
-
-    // boton reset
     if (e.target.classList.contains('fa-undo-alt')) {
-        const tarea = tareas[e.target.dataset.id]
-        tarea.estado = false
-        tareas[e.target.dataset.id] = { ...tarea }
+        tareas[e.target.dataset.id].estado = false
         pintarTareas()
     }
 
     e.stopPropagation()
-})
+}
 ```
