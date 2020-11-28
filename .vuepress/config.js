@@ -21,6 +21,7 @@ module.exports = {
         '/fundamentos/',
         '/02-dom/',
         '/02a-todo/',
+        '/02b-todo-vue/',
         '/03-vue-carrito/',
         '/chat/',
       ]
